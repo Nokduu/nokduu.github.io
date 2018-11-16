@@ -20,7 +20,7 @@
     	minutesRound = Math.floor(minutes); 
     	seconds = (dday - now) / 1000 - (24 * 60 * 60 * daysRound) - (60 * 60 * hoursRound) - (60 * minutesRound); 
  
-        document.getElementById('text').innerHTML = D + '일 ' + H + '시간 ' + M + '분 ' + S + '초 남음.';
+        document.getElementById('text').innerHTML = days + '일 ' + hours+ '시간 ' + minutes + '분 ' + seconds + '초 남음.';
     }
  
     remain();
