@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta charset="utf-8">
+		<meta charset='utf-8'>
 		<title>테스트</title>
 	</head>
 
@@ -9,18 +9,16 @@
 <div id="text"></div>
  
 <script type="text/javascript">
- 
-    var date = new Date(2019, 11, 14, 0, 0, 0);
-    var time = date.getTime();
- 
     function remain(){
-        var now = new Date();
-        var gap = Math.round((time - now.getTime()) / 1000);
- 
-        var D = Math.floor(gap / 86400);
-        var H = Math.floor((gap - D * 86400) / 3600 % 3600);
-        var M = Math.floor((gap - H * 3600) / 60 % 60);
-        var S = Math.floor((gap - M * 60) % 60);
+    	now = new Date(); 
+    	dday = new Date(2019,11,14,00,00,00);
+    	days = (dday - now) / 1000 / 60 / 60 / 24; 
+    	daysRound = Math.floor(days); 
+    	hours = (dday - now) / 1000 / 60 / 60 - (24 * daysRound); 
+    	hoursRound = Math.floor(hours); 
+    	minutes = (dday - now) / 1000 /60 - (24 * 60 * daysRound) - (60 * hoursRound); 
+    	minutesRound = Math.floor(minutes); 
+    	seconds = (dday - now) / 1000 - (24 * 60 * 60 * daysRound) - (60 * 60 * hoursRound) - (60 * minutesRound); 
  
         document.getElementById('text').innerHTML = D + '일 ' + H + '시간 ' + M + '분 ' + S + '초 남음.';
     }
