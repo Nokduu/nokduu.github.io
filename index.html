@@ -26,41 +26,12 @@
 				</div>
 			</div>
 		</div>
-				<a href="javascript:sendLink()" id="kakao-link-btn">카톡보내기(테스트중)</a>
+		
 
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 		<script src="js/bootstrap.min.js"></script>
-		<script type="text/javascript" src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
 		<script type="text/javascript">
-		Kakao.init('6584e0cdfd12730a5f8b32480d2fa352');
-			function sendLink(){
-				Kakao.Link.sendDefault({
-					objectType: 'feed',
-					content: {
-						title: '남은 시간',
-						description: '#2020학년도수능 #내년수능 #수능 #수능남은시간',
-						link:{
-							mobileWebUrl: 'https://kkw3071.github.io/Test',
-							webUrl: 'https://kkw3071.github.io/Test'
-						}
-					},
-					social: {
-						likeCount: 286,
-						commentCount: 45,
-						sharedCount: 845
-					},
-					buttons: [
-						{
-							title: '남은 시간 보러가기',
-							link:{
-								mobileWebUrl: 'https://kkw3071.github.io/Test',
-								webUrl: 'https://kkw3071.github.io/Test'
-							}
-						}
-					]
-				});
-			}
-
+		
 		    function remain(){
 			now = new Date(); 
 			dday = new Date(2019,10,14,00,00,00);
