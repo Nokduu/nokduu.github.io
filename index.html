@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>테스트</title>
+	</head>
+
+	<body>
+<div id="text"></div>
+ 
+<script type="text/javascript">
+ 
+    var date = new Date(2019, 11, 14, 0, 0, 0);
+    var time = date.getTime();
+ 
+    function remain(){
+        var now = new Date();
+        var gap = Math.round((time - now.getTime()) / 1000);
+ 
+        var D = Math.floor(gap / 86400);
+        var H = Math.floor((gap - D * 86400) / 3600 % 3600);
+        var M = Math.floor((gap - H * 3600) / 60 % 60);
+        var S = Math.floor((gap - M * 60) % 60);
+ 
+        document.getElementById('text').innerHTML = D + '일 ' + H + '시간 ' + M + '분 ' + S + '초 남음.';
+    }
+ 
+    remain();
+    setInterval(remain, 1000);
+ 
+</script>		
+	</body>
+</html>
