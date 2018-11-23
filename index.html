@@ -20,14 +20,32 @@
 				<div class="col-xs-12 bg-info" align="center">
 					<h2>
 						<div id="text" style="background-color: white;">
-							
 						</div>
 					</h2>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-xs-12 bg-warning">
-					
+					<h3>남은 시간을 구할 날짜를 입력해주세요(beta)</h3>
+					<hr>
+					<label style="font-size: 16px; padding: 5px;">년</label>
+					<input type="number" name="year" placeholder="년" >
+					<br/>
+					<label style="font-size: 16px; padding: 5px;">월</label>
+					<input type="number" name="month" placeholder="월" max="12" min="1">
+					<br/>
+					<label style="font-size: 16px; padding: 5px;">일</label>
+					<input type="number" name="day" placeholder="일" max="31" min="1">
+					<br/>
+					<input type="button" name="btn" class="btn btn-success" value="확인">
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-12 bg-danger">
+					<h2>
+						<div id="custom" style="background-color: white;">
+						</div>
+					</h2>
 				</div>
 			</div>
 		</div>
@@ -36,23 +54,66 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 		<script src="js/bootstrap.min.js"></script>
 		<script type="text/javascript">
-		
-		    function remain(){
-			now = new Date(); 
-			dday = new Date(2019,10,14,08,40,00);
-			days = (dday - now) / 1000 / 60 / 60 / 24; 
-			daysRound = Math.floor(days); 
-			hours = (dday - now) / 1000 / 60 / 60 - (24 * daysRound); 
-			hoursRound = Math.floor(hours); 
-			minutes = (dday - now) / 1000 /60 - (24 * 60 * daysRound) - (60 * hoursRound); 
-			minutesRound = Math.floor(minutes); 
-			seconds = (dday - now) / 1000 - (24 * 60 * 60 * daysRound) - (60 * 60 * hoursRound) - (60 * minutesRound); 
+			$(document).ready(function(){
+			    str = "2019/11/14 08:40:00";
+			    remain(str,"su");
+			    setInterval("remain('"+str+"','su')", 1000);
+			});
 
-			document.getElementById('text').innerHTML = daysRound + '일 ' + hoursRound+ '시간 ' + minutesRound + '분 ' + Math.floor(seconds) + '초';
+		
+		    function remain(str,nm){
+				now = new Date(); 
+				dday = new Date(str);
+				days = (dday - now) / 1000 / 60 / 60 / 24; 
+				daysRound = Math.floor(days); 
+				hours = (dday - now) / 1000 / 60 / 60 - (24 * daysRound); 
+				hoursRound = Math.floor(hours); 
+				minutes = (dday - now) / 1000 /60 - (24 * 60 * daysRound) - (60 * hoursRound); 
+				minutesRound = Math.floor(minutes); 
+				seconds = (dday - now) / 1000 - (24 * 60 * 60 * daysRound) - (60 * 60 * hoursRound) - (60 * minutesRound); 
+
+				if(nm=="su"){
+					document.getElementById('text').innerHTML = daysRound + '일 ' + hoursRound+ '시간 ' + minutesRound + '분 ' + Math.floor(seconds) + '초';
+				}else if(nm=="cu"){
+					document.getElementById('custom').innerHTML = daysRound + '일 ' + hoursRound+ '시간 ' + minutesRound + '분 ' + Math.floor(seconds) + '초';
+				}
 		    }
 
-		    remain();
-		    setInterval(remain, 1000);
+		    $("input[name=year]").on("input", function(){
+		    	if(this.value.length > 4){
+		    		this.value = this.value.slice(0,4);
+		    	}
+		    });
+
+		    $("input[name=month]").on("input",function(){
+		    	if(this.value.length > 2){
+		    		this.value = this.value.slice(0,2);
+		    	}
+		    	if(this.value > 12){
+		    		this.value = 12;
+		    	}
+		    });
+
+		    $("input[name=day]").on("input", function(){
+		    	if(this.value.length > 2){
+		    		this.value = this.value.slice(0,2);
+		    	}
+		    	if(this.value > 31){
+		    		this.value = 31;
+		    	}
+		    });
+
+		    var timeid;
+		    $("input[name=btn]").on("click",function(){
+		    	str = $("input[name=year]").val()+"/"+$("input[name=month]").val()+"/"+$("input[name=day]").val()+" 00:00:00";
+		    	if(timeid != null){
+			    	clearInterval(timeid);
+			    }
+
+		    	remain(str,"cu");
+			    timeid = setInterval("remain('"+str+"','cu')", 1000);
+
+		    });
 
 		</script>		
 	</body>
