@@ -26,7 +26,7 @@
 			</div>
 			<div class="row">
 				<div class="col-xs-12 bg-warning">
-					<h3>남은 시간을 구할 날짜를 입력해주세요(beta)</h3>
+					<h4>남은 시간을 구할 날짜를 입력해주세요(beta)</h4>
 					<hr>
 					<label style="font-size: 16px; padding: 5px;">년</label>
 					<input type="number" name="year" placeholder="년" >
@@ -58,6 +58,9 @@
 			    str = "2019/11/14 08:40:00";
 			    remain(str,"su");
 			    setInterval("remain('"+str+"','su')", 1000);
+
+			    now = new Date();
+			    $("input[name=year]").attr("min",now.getFullYear());
 			});
 
 		
@@ -80,12 +83,20 @@
 		    }
 
 		    $("input[name=year]").on("input", function(){
+		    	now = new Date().getFullYear();
 		    	if(this.value.length > 4){
 		    		this.value = this.value.slice(0,4);
+		    	}
+		    	if(this.value.length==4&&this.value < now){
+		    		this.value = now;
 		    	}
 		    });
 
 		    $("input[name=month]").on("input",function(){
+		    	year = new Date().getFullYear();
+		    	month = new Date().getMonth()+1;
+
+
 		    	if(this.value.length > 2){
 		    		this.value = this.value.slice(0,2);
 		    	}
