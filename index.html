@@ -30,12 +30,18 @@
 					<hr>
 					<label style="font-size: 16px; padding: 5px;">년</label>
 					<input type="number" name="year" placeholder="년" >
+					<label style="font-size: 16px; padding: 5px;">시</label>
+					<input type="number" name="hour" placeholder="시" >
 					<br/>
 					<label style="font-size: 16px; padding: 5px;">월</label>
 					<input type="number" name="month" placeholder="월" max="12" min="1">
+					<label style="font-size: 16px; padding: 5px;">분</label>
+					<input type="number" name="minute" placeholder="분" >
 					<br/>
 					<label style="font-size: 16px; padding: 5px;">일</label>
 					<input type="number" name="day" placeholder="일" max="31" min="1">
+					<label style="font-size: 16px; padding: 5px;">초</label>
+					<input type="number" name="second" placeholder="초" >
 					<br/>
 					<input type="button" name="btn" class="btn btn-success" value="확인">
 				</div>
@@ -113,10 +119,46 @@
 		    		this.value = 31;
 		    	}
 		    });
+			
+		    $("input[name=hour]").on("input", function(){
+			if(this.value.length > 2){
+				this.value = this.value.slice(0,2);
+			}
+			if(this.value > 12){
+				this.value = 12;
+			}
+		    });
+			
+		    $("input[name=minute]").on("input", function(){
+			if(this.value.length > 2){
+				this.value = this.value.slice(0,2);
+			}
+			if(this.value > 60){
+				this.value = 60;
+			}
+		    });
+			
+		    $("input[name=second]").on("input", function(){
+			if(this.value.length > 2){
+				this.value = this.value.slice(0,2);
+			}
+			if(this.value > 60){
+				this.value = 60;
+			}
+		    });			
 
 		    var timeid;
 		    $("input[name=btn]").on("click",function(){
-		    	str = $("input[name=year]").val()+"/"+$("input[name=month]").val()+"/"+$("input[name=day]").val()+" 00:00:00";
+			var year = $("input[name=year]").val();
+			var month = $("input[name=month]").val();
+			var day = $("input[name=day]").val();    
+			
+			var hour = $("input[name=hour]").val();
+			var minute = $("input[name=minute]").val();
+			var second = $("input[name=second]").val();
+			    
+			    
+		    	str = year+"/"+month+"/"+day+" "+hour+":"+minute+":"+second;
 		    	if(timeid != null){
 			    	clearInterval(timeid);
 			    }
