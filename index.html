@@ -44,11 +44,11 @@
 						<br/>
 
 						<label style="font-size: 16px; padding: 5px;">분</label>
-						<input type="number" name="minute" placeholder="분"  min="1" max="60">
+						<input type="number" name="minute" placeholder="분"  min="1" max="59">
 						<br/>
 
 						<label style="font-size: 16px; padding: 5px;">초</label>
-						<input type="number" name="second" placeholder="초"  min="1" max="60">
+						<input type="number" name="second" placeholder="초"  min="1" max="59">
 					</div>
 					<input type="button" name="btn" class="btn btn-success" value="확인">
 				</div>
@@ -140,8 +140,8 @@
 			if(this.value.length > 2){
 				this.value = this.value.slice(0,2);
 			}
-			if(this.value > 60){
-				this.value = 60;
+			if(this.value > 59){
+				this.value = 59;
 			}
 		    });
 			
@@ -149,8 +149,8 @@
 			if(this.value.length > 2){
 				this.value = this.value.slice(0,2);
 			}
-			if(this.value > 60){
-				this.value = 60;
+			if(this.value > 59){
+				this.value = 59;
 			}
 		    });			
 
