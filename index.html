@@ -44,43 +44,6 @@
 					</button>
 				</div>
 			</div>
-			<div class="row">
-				<div class="col-xs-12 bg-warning">
-					<h4>남은 시간을 구할 날짜를 입력해주세요(beta)</h4>
-					<hr>
-					<div class="col-xs-6">
-						<label style="font-size: 16px; padding: 5px;">년</label>
-						<input type="number" name="year" placeholder="년" style="width:63px;">
-						<br/>
-						<label style="font-size: 16px; padding: 5px;">월</label>
-						<input type="number" name="month" placeholder="월" max="12" min="1" style="width:63px;">
-						<br/>
-						<label style="font-size: 16px; padding: 5px;">일</label>
-						<input type="number" name="day" placeholder="일" max="31" min="1" style="width:63px;">
-					</div>
-					<div class="col-xs-6">
-						<label style="font-size: 16px; padding: 5px;">시</label>
-						<input type="number" name="hour" placeholder="시" min="1" max="23" style="width:63px;">
-						<br/>
-
-						<label style="font-size: 16px; padding: 5px;">분</label>
-						<input type="number" name="minute" placeholder="분"  min="1" max="59" style="width:63px;">
-						<br/>
-
-						<label style="font-size: 16px; padding: 5px;">초</label>
-						<input type="number" name="second" placeholder="초"  min="1" max="59" style="width:63px;">
-					</div>
-					<input type="button" name="btn" class="btn btn-success" style="width:100%;" value="확인">
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-xs-12 bg-danger">
-					<h2>
-						<div id="custom" style="background-color: white;">
-						</div>
-					</h2>
-				</div>
-			</div>
 		</div>
 		
 
@@ -89,15 +52,12 @@
 		<script type="text/javascript">
 			$(document).ready(function(){
 			    str = "2019/11/14 08:40:00";
-			    remain(str,"su");
-			    setInterval("remain('"+str+"','su')", 1000);
-
-			    now = new Date();
-			    $("input[name=year]").attr("min",now.getFullYear());
+			    remain(str);
+			    setInterval("remain('"+str+"')", 1000);
 			});
 
-		
-		    function remain(str,nm){
+
+			function remain(str){
 				now = new Date(); 
 				dday = new Date(str);
 				days = (dday - now) / 1000 / 60 / 60 / 24; 
@@ -107,94 +67,8 @@
 				minutes = (dday - now) / 1000 /60 - (24 * 60 * daysRound) - (60 * hoursRound); 
 				minutesRound = Math.floor(minutes); 
 				seconds = (dday - now) / 1000 - (24 * 60 * 60 * daysRound) - (60 * 60 * hoursRound) - (60 * minutesRound); 
-
-				if(nm=="su"){
-					document.getElementById('text').innerHTML = daysRound + '일 ' + hoursRound+ '시간 ' + minutesRound + '분 ' + Math.floor(seconds) + '초';
-				}else if(nm=="cu"){
-					document.getElementById('custom').innerHTML = daysRound + '일 ' + hoursRound+ '시간 ' + minutesRound + '분 ' + Math.floor(seconds) + '초';
-				}
-		    }
-
-		    $("input[name=year]").on("input", function(){
-		    	now = new Date().getFullYear();
-		    	if(this.value.length > 4){
-		    		this.value = this.value.slice(0,4);
-		    	}
-		    	if(this.value.length==4&&this.value < now){
-		    		this.value = now;
-		    	}
-		    });
-
-		    $("input[name=month]").on("input",function(){
-		    	year = new Date().getFullYear();
-		    	month = new Date().getMonth()+1;
-
-
-		    	if(this.value.length > 2){
-		    		this.value = this.value.slice(0,2);
-		    	}
-		    	if(this.value > 12){
-		    		this.value = 12;
-		    	}
-		    });
-
-		    $("input[name=day]").on("input", function(){
-		    	if(this.value.length > 2){
-		    		this.value = this.value.slice(0,2);
-		    	}
-		    	if(this.value > 31){
-		    		this.value = 31;
-		    	}
-		    });
-			
-		    $("input[name=hour]").on("input", function(){
-			if(this.value.length > 2){
-				this.value = this.value.slice(0,2);
+				document.getElementById('text').innerHTML = daysRound + '일 ' + hoursRound+ '시간 ' + minutesRound + '분 ' + Math.floor(seconds) + '초';
 			}
-			if(this.value > 23){
-				this.value = 23;
-			}
-		    });
-			
-		    $("input[name=minute]").on("input", function(){
-			if(this.value.length > 2){
-				this.value = this.value.slice(0,2);
-			}
-			if(this.value > 59){
-				this.value = 59;
-			}
-		    });
-			
-		    $("input[name=second]").on("input", function(){
-			if(this.value.length > 2){
-				this.value = this.value.slice(0,2);
-			}
-			if(this.value > 59){
-				this.value = 59;
-			}
-		    });			
-
-		    var timeid;
-		    $("input[name=btn]").on("click",function(){
-			var year = $("input[name=year]").val();
-			var month = $("input[name=month]").val();
-			var day = $("input[name=day]").val();    
-			
-			var hour = $("input[name=hour]").val();
-			var minute = $("input[name=minute]").val();
-			var second = $("input[name=second]").val();
-			    
-			    
-		    	str = year+"/"+month+"/"+day+" "+hour+":"+minute+":"+second;
-		    	if(timeid != null){
-			    	clearInterval(timeid);
-			    }
-
-		    	remain(str,"cu");
-			    timeid = setInterval("remain('"+str+"','cu')", 1000);
-
-		    });
-
 		</script>		
 	</body>
 </html>
