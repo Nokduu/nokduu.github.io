@@ -12,6 +12,16 @@
 			padding: 0;
 			overflow: hidden;
 		}
+		
+		#text{
+			font-size: 4em;
+			font-family: 'Share Tech Mono', monospace;
+			color: #f32;
+			line-height: 1;
+			letter-spacing: -0.1em;
+			cursor: default;
+			text-align: center;
+		}
 		</style>
 		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 	</head>
@@ -25,10 +35,8 @@
 			</div>
 			<div class="row">
 				<div class="col-xs-12" align="center">
-					<h2>
-						<div id="text" style="background-color: white;">
-						</div>
-					</h2>
+					<div id="text" style="background-color: white;">
+					</div>
 				</div>
 			</div>
 		</div>
@@ -54,7 +62,7 @@
 				minutes = (dday - now) / 1000 /60 - (24 * 60 * daysRound) - (60 * hoursRound); 
 				minutesRound = Math.floor(minutes); 
 				seconds = (dday - now) / 1000 - (24 * 60 * 60 * daysRound) - (60 * 60 * hoursRound) - (60 * minutesRound); 
-				document.getElementById('text').innerHTML = daysRound + '일 ' + hoursRound+ '시간 ' + minutesRound + '분 ' + Math.floor(seconds) + '초';
+				document.getElementById('text').innerHTML = daysRound + ':' + hoursRound+ ':' + minutesRound + ':' + Math.floor(seconds);
 				document.getElementsByTagName('title').item(0).text = 'D-' + daysRound;
 			}
 		</script>		
