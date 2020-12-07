@@ -10,13 +10,19 @@
     font-weight: normal;
     font-style: normal;
 }
+@font-face {
+    font-family: 'NeoDunggeunmo';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.3/NeoDunggeunmo.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
 img{
     margin: 0;
     padding: 0;
     overflow: hidden;
 }
 
-#text{
+.text{
     font-size: 3em;
     font-family: 'LAB디지털', monospace;
     color: #ECECEC;
@@ -25,19 +31,43 @@ img{
     text-align: center;
 }
 
-#CSAT {
+.container {
     border: 1px solid black; 
     border-radius: 5px; 
-    margin-top: 50px;
+    margin-top: 15px;
 }
-#header {
+
+.row.header {
     background-color: #484848;
 }
-#header #content{
+.row.header > .col.content{
     font-size: 4em; 
     font-family: 'Bazzi'; 
-    color: #FFFFFF;
     line-height: 1;
     cursor: default;
     text-align: center;
+}
+
+.row.content {
+    color: #FFFFFF;
+    text-align: center;
+    background-color: #565656;
+}
+
+.row.content label {
+    font-size: 2em; 
+    font-family: 'NeoDunggeunmo'; 
+    line-height: 1;
+    cursor: default;
+}
+
+#dateTime {
+    font-size: 30pt;
+    height: 50px;
+    line-height: 50px;
+}
+
+#add {
+    width: 100%;
+    margin: 10px auto;
 }
