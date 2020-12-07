@@ -1,0 +1,43 @@
+@font-face {
+    font-family: 'LAB디지털';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/LAB디지털.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Bazzi';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/Bazzi.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+img{
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+#text{
+    font-size: 4em;
+    font-family: 'LAB디지털', monospace;
+    color: #ECECEC;
+    line-height: 1;
+    cursor: default;
+    text-align: center;
+}
+
+#CSAT {
+    border: 1px solid black; 
+    border-radius: 5px; 
+    margin-top: 50px;
+}
+#header {
+    background-color: #484848;
+}
+#header #content{
+    font-size: 4em; 
+    font-family: 'Bazzi'; 
+    color: #FFFFFF;
+    line-height: 1;
+    cursor: default;
+    text-align: center;
+}
