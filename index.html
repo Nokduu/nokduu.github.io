@@ -55,6 +55,7 @@
 				minutesRound = Math.floor(minutes); 
 				seconds = (dday - now) / 1000 - (24 * 60 * 60 * daysRound) - (60 * 60 * hoursRound) - (60 * minutesRound); 
 				document.getElementById('text').innerHTML = daysRound + '일 ' + hoursRound+ '시간 ' + minutesRound + '분 ' + Math.floor(seconds) + '초';
+				document.getElementsByTagName('title').item(0).text = 'D-' + daysRound;
 			}
 		</script>		
 	</body>
