@@ -59,15 +59,20 @@ img{
     font-family: 'NeoDunggeunmo'; 
     line-height: 1;
     cursor: default;
+    margin-top: 5px;
 }
 
-#dateTime {
+#name {
+    font-family: 'NeoDunggeunmo';
+}
+
+#dateTime, #name {
     font-size: 30pt;
     height: 50px;
     line-height: 50px;
 }
 
-#add {
+.btn{
     width: 100%;
     margin: 10px auto;
 }
